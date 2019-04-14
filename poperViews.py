@@ -4,10 +4,10 @@ import codecs
 
 from properties import Properties
 
-path = './template/'
-file = './uid_157390d616a0fbf9b0873c5.xls'
+path = 'E:/Git_Clone/VUE_R6_FTL/@VIEW/'
+file = './uid_1150aed716a19ceb0a37cf9.xls'
 
-path2 = 'E:/Git_Clone/VUE_R4_STYLE01/@VIEW/'
+path2 = 'E:/Git_Clone\VUE_R6_FTL/@VIEW/'
 
 # 创建视图基础文件
 def createView(name, viewtype):  # 定义函数名
@@ -46,7 +46,7 @@ def properViews():
     sheet2 = wb.sheet_by_name('数据')  # 通过名字获取表格
 
     # print(sheet1.name, sheet1.nrows, sheet1.ncols)
-    row_index = 0
+    row_index = 1
     while row_index < sheet1.nrows:
 
         # rows = sheet1.row_values(row_index)
@@ -62,6 +62,7 @@ def properViews():
         
         # 是移动端视图
         MOB = viewid.find('MOB') != -1
+        MB = viewid.find('MB') != -1
         # 是动态视图
         DYNA = viewid.find('DYNA') != -1
         # 该视图已经被建立
@@ -75,7 +76,9 @@ def properViews():
             continue
         if hastype:
             continue
-
+        
+        
+        print(hastype, '==========',viewid, '==========', viewid, '==========', isentityview)
         createView(viewname, viewid)
 
 
