@@ -4,10 +4,10 @@ import codecs
 
 from properties import Properties
 
-path = 'E:/Git_Clone/VUE_R6_FTL/@VIEW/'
-file = './uid_1150aed716a19ceb0a37cf9.xls'
+path = 'E:/Git_Clone/VUE_R6_FTL/@EDITOR/'
+file = './uid_1150aed716a19ceb0a37c3e.xls'
 
-path2 = 'E:/Git_Clone\VUE_R6_FTL/@VIEW/'
+path2 = 'E:/Git_Clone/VUE_R6_FTL/@EDITOR/'
 
 # 创建视图基础文件
 def createView(name, viewtype):  # 定义函数名
@@ -18,15 +18,15 @@ def createView(name, viewtype):  # 定义函数名
         os.makedirs(targetfolder)
 
     template = codecs.open(path + name + '\\' + 'template.properties', 'w', encoding='utf-8')
-    template.write('VIEWTYPE=' + viewtype)  # 写入内容信息
+    template.write('EDITORTYPE=' + viewtype)  # 写入内容信息
     template.close()
 
-    VIEW_less = codecs.open(path + name + '\\' + 'VIEW.less.ftl', 'w', encoding='utf-8')
-    VIEW_less.write('${P.getLayoutCode().code}')  # 写入内容信息
+    VIEW_less = codecs.open(path + name + '\\' + 'EDITOR.less.ftl', 'w', encoding='utf-8')
+    VIEW_less.write('')  # 写入内容信息
     VIEW_less.close()
 
-    VIEW_tsx = codecs.open(path + name + '\\' + 'VIEW.tsx.ftl', 'w', encoding='utf-8')
-    VIEW_tsx.write('<#ibizinclude>\n../@MACRO/VIEW.tsx.ftl\n</#ibizinclude>')  # 写入内容信息
+    VIEW_tsx = codecs.open(path + name + '\\' + 'EDITOR.tsx.ftl', 'w', encoding='utf-8')
+    VIEW_tsx.write('')  # 写入内容信息
     VIEW_tsx.close()
 
 
@@ -51,37 +51,34 @@ def properViews():
 
         # rows = sheet1.row_values(row_index)
         # 视图标识
-        viewid = sheet2.cell(row_index, 0).value
+        id = sheet2.cell(row_index, 0).value
         # 视图名称
-        viewname = sheet2.cell(row_index, 1).value
-        # 是否实体视图
-        isentityview = sheet2.cell(row_index, 5).value
+        name = sheet2.cell(row_index, 1).value
+        # 是否移动端编辑器
+        ismobeditor = sheet2.cell(row_index, 6).value
 
-        if isentityview == '是':
-            viewid = 'APP' +  viewid
         
         # 是移动端视图
-        MOB = viewid.find('MOB') != -1
-        MB = viewid.find('MB') != -1
-        # 是动态视图
-        DYNA = viewid.find('DYNA') != -1
-        # 该视图已经被建立
-        hastype = viewid in data
+        MOB = id.find('MOB') != -1
+        MB = id.find('MB') != -1
 
-        # print(hastype, '==========',viewid, '==========', viewid, '==========', isentityview)
+        # 该视图已经被建立
+        hastype = id in data
+
+        # print(hastype, '==========',id, '==========', name, '==========', ismobeditor)
         row_index = row_index + 1
         if MOB:
             continue
         if MB:
             continue
-        if DYNA:
+        if ismobeditor == '是':
             continue
         if hastype:
             continue
         
         
-        print(hastype, '==========',viewid, '==========', viewid, '==========', isentityview)
-        createView(viewname, viewid)
+        print(hastype, '==========',id, '==========', name, '==========', ismobeditor)
+        createView(name, id)
 
 
 if __name__ == '__main__':
