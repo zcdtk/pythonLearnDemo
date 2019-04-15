@@ -5,7 +5,7 @@ import codecs
 from properties import Properties
 
 path = 'E:/Git_Clone/VUE_R6_FTL/@CONTROL/'
-file = './uid_1150aed716a19ceb0a37c3e.xls'
+file = './uid_1150aed716a19ceb0a379bf.xls'
 
 path2 = 'E:/Git_Clone/VUE_R6_FTL/@CONTROL/'
 
@@ -30,14 +30,13 @@ def createView(name, viewtype):  # 定义函数名
     CONTROL_html.close()
 
     CONTROL_tsx = codecs.open(path + name + '\\' + 'CONTROL.tsx.ftl', 'w', encoding='utf-8')
-    CONTROL_tsx.write('import { Vue, Component, Provide } from \'vue-property-decorator\';'
-
-+'@Component({})'
-+'export default class ${view.codeName} extends Vue {'
-+    'public render() {'
-+        'return <div>未实现</div>;'
-+    '}'
-+'}')  # 写入内容信息
+    CONTROL_tsx.write('import { Vue, Component, Provide } from \'vue-property-decorator\';\n\n'
++'@Component({})\n'
++'export default class ${view.codeName} extends Vue {\n'
++'    public render() {\n'
++'        return <div>未实现</div>;\n'
++'    }\n'
++'}\n')  # 写入内容信息
     CONTROL_tsx.close()
 
 
