@@ -72,7 +72,7 @@ def properViews():
         row_index = row_index + 1
 
         # 脏数据
-        if id  == 'APPDETABFORMVIEW9':
+        if id  == 'APPDETREEPICKUPVIEW':
             continue;
         if MOB:
             continue
