@@ -51,25 +51,29 @@ def properViews():
 
         # rows = sheet1.row_values(row_index)
         # 视图标识
-        viewid = sheet2.cell(row_index, 0).value
+        id = sheet2.cell(row_index, 0).value
         # 视图名称
-        viewname = sheet2.cell(row_index, 1).value
+        name = sheet2.cell(row_index, 1).value
         # 是否实体视图
         isentityview = sheet2.cell(row_index, 5).value
 
         if isentityview == '是':
-            viewid = 'APP' +  viewid
+            id = 'APP' +  id
         
         # 是移动端视图
-        MOB = viewid.find('MOB') != -1
-        MB = viewid.find('MB') != -1
+        MOB = id.find('MOB') != -1
+        MB = id.find('MB') != -1
         # 是动态视图
-        DYNA = viewid.find('DYNA') != -1
+        DYNA = id.find('DYNA') != -1
         # 该视图已经被建立
-        hastype = viewid in data
+        hastype = id in data
 
-        # print(hastype, '==========',viewid, '==========', viewid, '==========', isentityview)
+        # print(hastype, '==========',id, '==========', name, '==========', isentityview)
         row_index = row_index + 1
+
+        # 脏数据
+        if id  == 'APPDETABFORMVIEW9':
+            continue;
         if MOB:
             continue
         if MB:
@@ -80,8 +84,8 @@ def properViews():
             continue
         
         
-        print(hastype, '==========',viewid, '==========', viewid, '==========', isentityview)
-        createView(viewname, viewid)
+        print(hastype, '==========',id, '==========', name, '==========', isentityview)
+        createView(name, id)
 
 
 if __name__ == '__main__':

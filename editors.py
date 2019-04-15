@@ -21,13 +21,13 @@ def createView(name, viewtype):  # 定义函数名
     template.write('EDITORTYPE=' + viewtype)  # 写入内容信息
     template.close()
 
-    VIEW_less = codecs.open(path + name + '\\' + 'EDITOR.less.ftl', 'w', encoding='utf-8')
-    VIEW_less.write('')  # 写入内容信息
-    VIEW_less.close()
+    EDITOR_less = codecs.open(path + name + '\\' + 'EDITOR.less.ftl', 'w', encoding='utf-8')
+    EDITOR_less.write('')  # 写入内容信息
+    EDITOR_less.close()
 
-    VIEW_tsx = codecs.open(path + name + '\\' + 'EDITOR.tsx.ftl', 'w', encoding='utf-8')
-    VIEW_tsx.write('')  # 写入内容信息
-    VIEW_tsx.close()
+    EDITOR_tsx = codecs.open(path + name + '\\' + 'EDITOR.tsx.ftl', 'w', encoding='utf-8')
+    EDITOR_tsx.write('')  # 写入内容信息
+    EDITOR_tsx.close()
 
 
 # 读取excel
